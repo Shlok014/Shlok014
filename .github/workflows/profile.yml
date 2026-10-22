@@ -1,0 +1,49 @@
+# Redraws the live parts of the profile once a day: the 12-month stats card and the
+# contribution snake. Both are published to the `output` branch, which the README links to,
+# so main stays free of daily bot commits.
+name: profile
+
+on:
+  schedule:
+    - cron: "30 0 * * *" # 06:00 IST
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["scripts/**", "assets/fonts/**", ".github/workflows/profile.yml"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: profile
+  cancel-in-progress: false
+
+jobs:
+  draw:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Stats card
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 scripts/stats.py "${{ github.repository_owner }}" dist
+
+      - name: Contribution snake
+        uses: Platane/snk/svg-only@v3
+        with:
+          github_user_name: ${{ github.repository_owner }}
+          outputs: |
+            dist/snake-light.svg?color_snake=#c8102e&color_dots=#ebedf0,#c9e4d5,#8fcaa9,#3f9e6e,#0b7a4b
+            dist/snake-dark.svg?color_snake=#f2545b&color_dots=#161b22,#173a2a,#1f6142,#2e8c5a,#3fb97a
+
+      - name: Publish to the output branch
+        uses: crazy-max/ghaction-github-pages@v5
+        with:
+          target_branch: output
+          build_dir: dist
+          jekyll: false
+          commit_message: Redraw profile stats and snake
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
