@@ -40,8 +40,8 @@ drive the real interface instead of a mock.
 #### Toolkit
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://skillicons.dev/icons?i=python,ts,react,vite,tailwind,postgres,supabase,flask,sklearn,docker,terraform,githubactions,linux&theme=dark&perline=13">
-  <img alt="Python, TypeScript, React, Vite, Tailwind, Postgres, Supabase, Flask, scikit-learn, Docker, Terraform, GitHub Actions, Linux" src="https://skillicons.dev/icons?i=python,ts,react,vite,tailwind,postgres,supabase,flask,sklearn,docker,terraform,githubactions,linux&theme=light&perline=13" width="100%">
+  <source media="(prefers-color-scheme: dark)" srcset="https://skillicons.dev/icons?i=python%2Cts%2Creact%2Cvite%2Ctailwind%2Cpostgres%2Csupabase%2Cflask%2Csklearn%2Cdocker%2Cterraform%2Cgithubactions%2Clinux&theme=dark&perline=13">
+  <img alt="Python, TypeScript, React, Vite, Tailwind, Postgres, Supabase, Flask, scikit-learn, Docker, Terraform, GitHub Actions, Linux" src="https://skillicons.dev/icons?i=python%2Cts%2Creact%2Cvite%2Ctailwind%2Cpostgres%2Csupabase%2Cflask%2Csklearn%2Cdocker%2Cterraform%2Cgithubactions%2Clinux&theme=light&perline=13" width="100%">
 </picture>
 
 #### Activity
